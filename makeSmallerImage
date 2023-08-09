@@ -1,0 +1,18 @@
+ public Bitmap makeSmallerImage(Bitmap image,int maximumSize){
+        //Bize gelen resım dosyasının boyutlarını aldık bunu orantılı kucultme yapma ıslemınde kullanacagız
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float) width/ (float) height ;
+        if (bitmapRatio > 1){
+            //gorsel yataysa (landscape)
+            width = maximumSize;
+            height= (int) (width/bitmapRatio);
+        }
+        else {
+            //gorsel dıkeyse (portrait)
+            height=maximumSize;
+            width=(int) (height*bitmapRatio);
+        }
+        return image.createScaledBitmap(image,width,height,true);
+    }
